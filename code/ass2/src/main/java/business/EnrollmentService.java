@@ -1,6 +1,7 @@
 package business;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,12 @@ public class EnrollmentService {
 	@Autowired 
 	private EnrollmentRepository enrollmentRepo;
 	
+	public Optional<Enrollment> findById(Integer id) {
+		return enrollmentRepo.findById(id);
+	}
+	
 	public Enrollment createEnrollment(Student student, Course course) {
-		
+
 		return enrollmentRepo.save(new Enrollment(0, student, course, 0.0));
 	}
 	
@@ -32,7 +37,7 @@ public class EnrollmentService {
 		enrollmentRepo.save(enrollment);
 	}
 	
-	public void deleteEnrollment(Enrollment enrollment) {
-		enrollmentRepo.delete(enrollment);
+	public void deleteEnrollment(Integer id) {
+		enrollmentRepo.deleteById(id);
 	}
 }

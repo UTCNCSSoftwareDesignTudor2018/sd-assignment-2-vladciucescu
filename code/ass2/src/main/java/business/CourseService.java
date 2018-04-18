@@ -1,6 +1,7 @@
 package business;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,10 @@ public class CourseService {
 	
 	@Autowired
 	private StudentRepository studentRepo;
+	
+	public Optional<Course> findById(Integer id) {
+		return courseRepo.findById(id);
+	}
 	
 	public List<Course> getCourses() {
 		

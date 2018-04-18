@@ -6,19 +6,29 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dataAccess.entity.Enrollment;
 import dataAccess.entity.Student;
+import dataAccess.entity.Teacher;
 import dataAccess.repository.EnrollmentRepository;
+import dataAccess.repository.TeacherRepository;
 
 @Service
 public class TeacherService {
 
 	@Autowired
 	private EnrollmentRepository enrollmentRepo;
+	
+	@Autowired
+	private TeacherRepository teacherRepo;
+	
+	public Optional<Teacher> getTeacher(Integer id) {
+		return teacherRepo.findById(id);
+	}
 	
 	public File createReport(Student student, LocalDate start, LocalDate end) throws Exception {
         File directory = new File("reports");

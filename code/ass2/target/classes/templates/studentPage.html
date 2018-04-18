@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Student Profile</h2>
+<div style="background-color:lightblue">
+  <h3 th:text="${student.name + ' ' + student.surname}"></h3>
+  <dl>
+  <dt>Id Card Number</dt>
+  <dd th:text="${student.idCardNumber}"></dd>
+  <dt>Group</dt>
+  <dd th:text="${student.group}"></dd>
+  <dt>Year</dt>
+  <dd th:text="${student.year}"</dd>
+  <dt>Address</dt>
+  <dd th:text="${student.address}"></dd>
+  <dt>Email</dt>
+  <dd th:text="${student.email}"></dd>
+</dl> 
+<hr>
+</div>
+<form action="studentPage" method="post">
+    	New Email: <input type="text" name="email" value=""><br>
+        <input type="submit" value="Change Email", name="Change Email"/> 
+    </form>
+</div>
+<hr>
+<form action="studentPage" method="post">
+    	New Address: <input type="text" name="address" value=""><br>
+        <input type="submit" value="Change Address" name="Change Address"/> 
+    </form>
+</div>
+<hr>
+<h3>Enrollments</h3>
+<table  border="1">
+    <thead>
+      <tr>
+        <th>COURSE NAME</th>
+		<th>TEACHER</th>
+		<th>END DATE</th>
+		<th>EXAM DATE</th>
+        <th>GRADE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="enr : ${ enrollments }">
+				<td th:text="${ enr.course.name }">name</td>
+				<td th:text="${ enr.course.teacher.name +' '+ enr.course.teacher.surname}">teacher</td>
+				<td th:text="${ enr.course.endDate}">ed</td>
+				<td th:text="${ enr.course.examDate}">exd</td>
+				<td th:text="${ enr.grade}">gr</td>
+	  </tr>
+    </tbody>
+</table>
+<h3>Available Courses</h3>
+<table  border="1">
+    <thead>
+      <tr>
+        <th>COURSE NAME</th>
+		<th>TEACHER</th>
+		<th>START DATE</th>
+		<th>END DATE</th>
+		<th>EXAM DATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="crs : ${ courses }">
+				<td th:text="${ crs.name }">name</td>
+				<td th:text="${ crs.teacher.name +' '+ crs.teacher.surname}">teacher</td>
+				<td th:text="${ crs.startDate}">sd</td>
+				<td th:text="${ crs.endDate}">ed</td>
+				<td th:text="${ crs.examDate}">exd</td>
+	  </tr>
+    </tbody>
+</table>
+<hr>
+<form action="#" th:action="@{/studentPage}" th:object="${course}" method="post">
+	<table>
+		<tr>
+			<td>Select Course:</td>
+			<td>
+				<select th:field="*{id}">
+					<option th:each="crs:${courses}"
+						th:value="${crs.id}"
+						th:utext="${crs.name}"
+					/>
+				</select>
+			</td>
+		</tr>
+		<tr>
+        	<td><input type="submit" value="Enroll" name="Enroll"/></td>
+        </tr>
+	</table>
+</form>
+<hr>   
+ <form action="/">
+  <input type="submit" value="Log Out">
+</form> 
+</body>
+</html>

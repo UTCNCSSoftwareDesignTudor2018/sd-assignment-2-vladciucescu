@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories("dataAccess.repository") 
-@ComponentScan("business")
+@ComponentScan(basePackages= {"business","presentation"})
 @EntityScan("dataAccess.entity") 
 public class Application {
 	

@@ -12,7 +12,7 @@ public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", updatable = false, nullable = false)
-	private final Integer id;
+	private Integer id;
 	
 	@Column
 	private String name;
@@ -33,11 +33,11 @@ public class Course {
 	@ManyToMany(mappedBy = "courses")
 	private List<Student> students; 
 	
-	private Course() {
+	public Course() {
 		id = 0;
-	};
+	}
 	
-	private Course(Integer id, String name, LocalDate startDate, LocalDate endDate, LocalDate examDate,
+	public Course(Integer id, String name, LocalDate startDate, LocalDate endDate, LocalDate examDate,
 			Teacher teacher) {
 		super();
 		this.id = id;
@@ -50,6 +50,10 @@ public class Course {
 	
 	public Integer getId() {
 		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	public String getName() {

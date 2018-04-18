@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Teacher Profile</h2>
+<div style="background-color:lightblue">
+  <h3 th:text="${teacher.name + ' ' + teacher.surname}"></h3>
+  <dl>
+  <dt>Id Card Number</dt>
+  <dd th:text="${teacher.idCardNumber}"></dd>
+  <dt>Address</dt>
+  <dd th:text="${teacher.address}"></dd>
+  <dt>Email</dt>
+  <dd th:text="${teacher.email}"></dd>
+</dl> 
+<hr>
+</div>
+<form action="teacherPage" method="post">
+    	New Email: <input type="text" name="email" value=""><br>
+        <input type="submit" value="Change Email", name="Change Email"/> 
+    </form>
+</div>
+<hr>
+<form action="teacherPage" method="post">
+    	New Address: <input type="text" name="address" value=""><br>
+        <input type="submit" value="Change Address" name="Change Address"/> 
+    </form>
+</div>  
+<hr>
+<form action="#" th:action="@{/teacherPage}" th:object="${student}" method="post">
+	<table>
+		<tr>
+			<td>Select Student:</td>
+			<td>
+				<select th:field="*{id}">
+					<option th:each="stud:${students}"
+						th:value="${stud.id}"
+						th:utext="${stud.name+' '+stud.surname}"
+					/>
+				</select>
+			</td>
+		</tr>
+		<tr>
+        	<td><input type="submit" value="Modify Student" name="Modify Student"/></td>
+        </tr>
+	</table>
+</form>
+<hr> 
+ <form action="/">
+  <input type="submit" value="Log Out">
+</form> 
+</body>
+</html>

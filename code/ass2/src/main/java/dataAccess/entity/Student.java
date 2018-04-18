@@ -22,7 +22,7 @@ public class Student extends User {
     )
 	List<Course> courses;
 	
-	private Student() {}
+	public Student() {}
 	
 	private Student(Integer id, String name, String surname, Integer idCardNumber, String address, String email, Short year, Integer group) {
 		super(id, name, surname, idCardNumber, address, email);

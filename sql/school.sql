@@ -116,7 +116,7 @@ ALTER SEQUENCE public.enrollments_id_seq OWNED BY public.enrollments.id;
 CREATE TABLE public.students (
     id integer NOT NULL,
     year smallint NOT NULL,
-    "group" integer NOT NULL
+    "groupp" integer NOT NULL
 );
 
 
@@ -243,7 +243,7 @@ COPY public.enrollments (id, student_id, course_id, grade) FROM stdin;
 -- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.students (id, year, "group") FROM stdin;
+COPY public.students (id, year, "groupp") FROM stdin;
 2	2	30323
 4	1	42313
 5	3	21332

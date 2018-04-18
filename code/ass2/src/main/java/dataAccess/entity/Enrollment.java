@@ -9,7 +9,7 @@ public class Enrollment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", updatable = false, nullable = false)
-	private final Integer id;
+	private Integer id;
 	
 	@ManyToOne
     @JoinColumn(name = "student_id")
@@ -36,6 +36,10 @@ public class Enrollment {
 
 	public Integer getId() {
 		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id=id;
 	}
 
 	public Student getStudent() {

@@ -1,4 +1,4 @@
-package dataAccess;
+package service;
 
 import java.util.Optional;
 
@@ -45,7 +45,7 @@ public class ServiceTest {
 		Enrollment expected = enrollmentService.createEnrollment(student.get(), course.get());
 		Optional<Enrollment> res = enrollmentRepo.findById(expected.getId());
 		Assert.assertEquals(expected, res.get());
-		enrollmentService.deleteEnrollment(res.get());
+		enrollmentService.deleteEnrollment(res.get().getId());
 	}
 	
 	@Test

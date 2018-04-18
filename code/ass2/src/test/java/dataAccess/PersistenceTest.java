@@ -14,6 +14,7 @@ import ass2.Application;
 import dataAccess.entity.Course;
 import dataAccess.entity.Enrollment;
 import dataAccess.entity.Student;
+import dataAccess.entity.Teacher;
 import dataAccess.entity.User;
 import dataAccess.repository.CourseRepository;
 import dataAccess.repository.EnrollmentRepository;
@@ -73,6 +74,15 @@ public class PersistenceTest {
 		Optional<Student> student = studentRepo.findById(2);
 		List<Course> courses = studentRepo.findAllCourses(student.get().getId());
 		Assert.assertFalse(courses.isEmpty());
+	}
+	
+	@Test
+	public void findByEmailTest() {
+		
+		Optional<User> user = userRepo.findByEmail("pop.ana@gmail.com");
+		Teacher.TeacherBuilder ub = new Teacher.TeacherBuilder();
+		User expected = ub.setId(1).setName("Ana").setSurname("Pop").setIdCardNumber(2314).setAddress("strada Mica").build();
+		Assert.assertEquals(expected, user.get());
 	}
 
 }
