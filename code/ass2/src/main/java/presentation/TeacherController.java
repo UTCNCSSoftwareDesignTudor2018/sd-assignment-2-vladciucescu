@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import business.StudentService;
+import business.TeacherService;
 import business.UserService;
 import dataAccess.entity.Student;
 import dataAccess.entity.Teacher;
@@ -27,6 +28,10 @@ public class TeacherController {
 	
 	@Autowired
 	private StudentService studentService;
+	
+	//for reports
+	@Autowired
+	private TeacherService teacherService;
 	
 	private ModelAndView mav;
 	

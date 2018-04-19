@@ -18,7 +18,7 @@ import dataAccess.entity.Enrollment;
 import dataAccess.entity.Student;
 
 @Controller
-public class ModStudentController {
+public class StudentAdministrationController {
 
 	@Autowired
 	UserService userService;
